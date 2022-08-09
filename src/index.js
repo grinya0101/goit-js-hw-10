@@ -14,12 +14,13 @@ const divEl = document.querySelector("div")
 
 inputEl.addEventListener('input', debounce(onHandleInputEl, DEBOUNCE_DELAY));
 
-function onHandleInputEl(e) {
+function onHandleInputEl() {
     const getCountries = inputEl.value.trim();
-    fetchCountries(getCountries);
+   
       if (!getCountries) {
     resetMarkup();
-    return;
+    
+    return ;
   }
 
   fetchCountries(getCountries)
@@ -28,11 +29,11 @@ function onHandleInputEl(e) {
       Notiflix.Notify.failure('Упс, страны с таким названием не существует.')
     );
 
-
 }
 function createListItem(countries) {
     if (countries.length > 10) {
       resetMarkup();
+      
       Notiflix.Notify.info(
         'Найдено слишком много совпадений. Пожалуйста, введите более конкретное имя.'
       );
